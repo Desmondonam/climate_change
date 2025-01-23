@@ -15,7 +15,7 @@ class DataCollector:
         self.co2_data = None
         
         # Default data sources (replace with actual URLs/paths)
-        self.default_temp_source = temperature_source or "https://example.com/temp_data.csv"
+        self.default_temp_source = temperature_source or "https://github.com/Desmondonam/climate_change/blob/main/data/observed-annual-average.csv"
         self.default_co2_source = co2_source or "https://example.com/co2_data.csv"
     
     def collect_temperature_data(self) -> pd.DataFrame:
