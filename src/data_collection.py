@@ -15,8 +15,8 @@ class DataCollector:
         self.co2_data = None
         
         # Default data sources (replace with actual URLs/paths)
-        self.default_temp_source = temperature_source or "https://github.com/Desmondonam/climate_change/blob/main/data/observed-annual-average.csv"
-        self.default_co2_source = co2_source or "https://example.com/co2_data.csv"
+        self.default_temp_source = temperature_source or "https://raw.githubusercontent.com/Desmondonam/climate_change/refs/heads/main/data/observed-annual-average.csv"
+        self.default_co2_source = co2_source or "https://raw.githubusercontent.com/Desmondonam/climate_change/refs/heads/main/data/annual-co2-emissions-per-country.csv"
     
     def collect_temperature_data(self) -> pd.DataFrame:
         """
@@ -29,7 +29,7 @@ class DataCollector:
             self.temperature_data = pd.read_csv(self.default_temp_source)
             
             # Basic data cleaning
-            self.temperature_data['Year'] = pd.to_datetime(self.temperature_data['Year'], format='%Y')
+            self.temperature_data['Year'] = pd.to_datetime(self.temperature_data['Category'], format='%Y')
             self.temperature_data.dropna(inplace=True)
             
             return self.temperature_data
